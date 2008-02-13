@@ -58,14 +58,14 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
   
   # == Optional
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\\n\\n")
+  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = []     # An array of rubygem dependencies [name, version], e.g. [ ['active_support', '>= 1.3.1'] ]
   
   #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
   
 end
 
-CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
+CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\n\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
 hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 hoe.rsync_args = '-av --delete --ignore-errors'

@@ -2,6 +2,7 @@ $:.unshift File.dirname(__FILE__)
 
 module Polyglot
   @registrations ||= {}	# Guard against reloading
+  @loaded ||= {}
 
   def self.register(extension, klass)
     extension = [extension] unless Enumerable === extension
@@ -22,6 +23,19 @@ module Polyglot
     }
     return nil
   end
+
+  def self.load(*a, &b)
+    return if @loaded[a[0]] # Check for $: changes or file time changes and reload?
+    begin
+      source_file, loader = Polyglot.find(*a, &b)
+      if (loader)
+	loader.load(source_file)
+	@loaded[a[0]] = true
+      else
+	raise load_error
+      end
+    end
+  end
 end
 
 module Kernel
@@ -30,13 +44,6 @@ module Kernel
   def require(*a, &b)
     polyglot_original_require(*a, &b)
   rescue LoadError => load_error
-    begin
-      source_file, loader = Polyglot.find(*a, &b)
-      if (loader)
-	loader.load(source_file)
-      else
-	raise load_error
-      end
-    end
+    Polyglot.load(*a, &b)
   end
 end

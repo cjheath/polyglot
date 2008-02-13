@@ -1,4 +1,4 @@
-Ruby Gem:   Polyglot 0.1.0
+Ruby Gem:   Polyglot 0.2.0
 Author:	    Clifford Heath, 2007
 
 The Polyglot library allows a Ruby module to register a loader
