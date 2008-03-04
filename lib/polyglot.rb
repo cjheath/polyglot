@@ -32,7 +32,7 @@ module Polyglot
 	loader.load(source_file)
 	@loaded[a[0]] = true
       else
-	raise load_error
+	raise LoadError
       end
     end
   end
