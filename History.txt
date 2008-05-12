@@ -1,3 +1,14 @@
+== 0.2.2 2008-05-12
+
+* 2 minor enhancements:
+  * Doesn't search $: when asked to load an absolute path
+  * Adds a helpful exception message on LoadError
+
+== 0.2.1 2008-03-05
+
+* 1 minor defect:
+  * code to raise LoadError itself raised an exception
+
 == 0.2.0 2008-02-13
 
 * 1 major enhancement:
