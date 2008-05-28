@@ -52,6 +52,11 @@ module Kernel
   def require(*a, &b)
     polyglot_original_require(*a, &b)
   rescue LoadError => load_error
-    Polyglot.load(*a, &b)
+    begin
+      Polyglot.load(*a, &b)
+    rescue
+      # Raise the original exception, possibly a MissingSourceFile with a path
+      raise load_error
+    end
   end
 end
