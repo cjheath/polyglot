@@ -35,7 +35,12 @@ module Polyglot
         loader.load(source_file)
         @loaded[a[0]] = true
       else
-        raise LoadError.new("Polyglot failed to load '#{a[0]}' either directly or using extensions #{@registrations.keys.sort.inspect}")
+        msg = "Failed to load #{a[0]} using extensions #{(@registrations.keys+["rb"]).sort*", "}"
+        if defined?(MissingSourceFile)
+          raise MissingSourceFile.new(msg, a[0])
+        else
+          raise LoadError.new(msg)
+        end
       end
     end
   end
