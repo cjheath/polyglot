@@ -54,7 +54,7 @@ module Kernel
   rescue LoadError => load_error
     begin
       Polyglot.load(*a, &b)
-    rescue
+    rescue LoadError
       # Raise the original exception, possibly a MissingSourceFile with a path
       raise load_error
     end
