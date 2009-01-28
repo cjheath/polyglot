@@ -52,35 +52,43 @@ a supported extension.</p>
 <p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">polyglot</span></pre></p>
 <h2>Example</h2>
 <p>Define and register your file type loader in file rubyglot.rb:</p>
-require &#8216;polyglot&#8217;
-class RubyglotLoader
-def self.load(filename, options = nil, &amp;block)
-File.open(filename) {|file|
-# Load the contents of file as Ruby code:
-# Implement your parser here instead!
-Kernel.eval(file.read)
-}
-end
-end
-Polyglot.register(&#8220;rgl&#8221;, RubyglotLoader)
+<pre>
+    require 'polyglot'
+    class RubyglotLoader
+        def self.load(filename, options = nil, &block)
+            File.open(filename) {|file|
+                # Load the contents of file as Ruby code:
+                # Implement your parser here instead!
+                Kernel.eval(file.read)
+            }
+        end
+    end
+    Polyglot.register("rgl", RubyglotLoader)
+</pre>
 <p>This file, hello.rgl, will be loaded (this simple example uses Ruby code):</p>
-puts &#8220;Initializing&#8221;
-class Hello
-def initialize()
-puts &#8220;Hello, world\n&#8221;
-end
-end
+<pre>
+    puts "Initializing"
+    class Hello
+        def initialize()
+            puts "Hello, world\n"
+        end
+    end
+</pre>
 <p>Call it from file test.rb:</p>
-require &#8216;rubyglot&#8217;	# Create my file type handler
-require &#8216;hello&#8217;	# Can add extra options or even a block here
-puts &#8220;Ready to go&#8221;
-Hello.new
+<pre>
+    require 'rubyglot'	# Create my file type handler
+    require 'hello'	# Can add extra options or even a block here
+    puts "Ready to go"
+    Hello.new
+</pre>
 <p>Run:</p>
-$ ruby test.rb
-Initializing
-Ready to go
-Hello, world
-$
+<pre>
+    $ ruby test.rb
+    Initializing
+    Ready to go
+    Hello, world
+    $
+</pre>
 <h2>How to submit patches</h2>
 <p>Read the <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/">8 steps for fixing other people&#8217;s code</a> and for section <a href="http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8z-email">8z: Submit patch</a>, email me on the link below.</p>
 <p>The trunk repository is <code>svn://rubyforge.org/var/svn/polyglot/trunk</code> for anonymous access.</p>
