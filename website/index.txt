@@ -1,6 +1,6 @@
 h1. polyglot
 
-h2. Poly &#x2192; many, glot &#x2192; languages
+h2. Poly => many, glot => languages
 
 
 h2. What

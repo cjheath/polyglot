@@ -1,3 +1,14 @@
+== 0.2.4 2008-05-29
+
+* 1 significant fix:
+  * Previous LoadError change is checked in this time (oops!)
+
+== 0.2.3 2008-05-29
+
+* 2 minor enhancements:
+  * Raise MissingSourceFile exception instead of LoadError if ActiveSupport is loaded
+  * Re-raise original exception new one on require load fail
+
 == 0.2.2 2008-05-12
 
 * 2 minor enhancements:

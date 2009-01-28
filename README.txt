@@ -1,4 +1,9 @@
-Ruby Gem:   Polyglot 0.2.0
+= polyglot
+
+* http://polyglot.rubyforge.org
+
+== DESCRIPTION:
+
 Author:	    Clifford Heath, 2007
 
 The Polyglot library allows a Ruby module to register a loader
@@ -10,7 +15,7 @@ appropriate to their purpose, instead of abusing the Ruby syntax.
 
 Files are sought using the normal Ruby search path.
 
-Example:
+== EXAMPLE:
 
 In file rubyglot.rb, define and register a file type handler:
 
@@ -51,3 +56,32 @@ Run:
     Ready to go
     Hello, world
     $
+
+== INSTALL:
+
+sudo gem install polyglot
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2007 Clifford Heath
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
