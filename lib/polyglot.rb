@@ -28,16 +28,17 @@ module Polyglot
   end
 
   def self.load(*a, &b)
-    return if @loaded[a[0]] # Check for $: changes or file time changes and reload?
+    file = a[0].to_str
+    return if @loaded[file] # Check for $: changes or file time changes and reload?
     begin
-      source_file, loader = Polyglot.find(*a, &b)
+      source_file, loader = Polyglot.find(file, *a[1..-1], &b)
       if (loader)
         loader.load(source_file)
-        @loaded[a[0]] = true
+        @loaded[file] = true
       else
-        msg = "Failed to load #{a[0]} using extensions #{(@registrations.keys+["rb"]).sort*", "}"
+        msg = "Failed to load #{file} using extensions #{(@registrations.keys+["rb"]).sort*", "}"
         if defined?(MissingSourceFile)
-          raise MissingSourceFile.new(msg, a[0])
+          raise MissingSourceFile.new(msg, file)
         else
           raise LoadError.new(msg)
         end

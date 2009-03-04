@@ -1,3 +1,8 @@
+== 0.2.5 2009-03-04
+
+* 1 significant fix:
+  * Polyglot's require may be called with a Pathname, or other object allowed by Kernel#require that doesn't support [] (Kernel#require uses to_str apparently)
+
 == 0.2.4 2008-05-29
 
 * 1 significant fix:
