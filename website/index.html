@@ -33,7 +33,7 @@
     <h1>polyglot</h1>
     <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/polyglot"; return false'>
       <p>Get Version</p>
-      <a href="http://rubyforge.org/projects/polyglot" class="numbers">0.2.4</a>
+      <a href="http://rubyforge.org/projects/polyglot" class="numbers">0.2.5</a>
     </div>
     <h2>Poly =&gt; many, glot =&gt; languages</h2>
 <h2>What</h2>
@@ -52,10 +52,9 @@ a supported extension.</p>
 <p><pre class='syntax'><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">polyglot</span></pre></p>
 <h2>Example</h2>
 <p>Define and register your file type loader in file rubyglot.rb:</p>
-<pre>
-    require 'polyglot'
+<pre>    require 'polyglot'
     class RubyglotLoader
-        def self.load(filename, options = nil, &block)
+        def self.load(filename, options = nil, &amp;block)
             File.open(filename) {|file|
                 # Load the contents of file as Ruby code:
                 # Implement your parser here instead!
@@ -66,8 +65,7 @@ a supported extension.</p>
     Polyglot.register("rgl", RubyglotLoader)
 </pre>
 <p>This file, hello.rgl, will be loaded (this simple example uses Ruby code):</p>
-<pre>
-    puts "Initializing"
+<pre>    puts "Initializing"
     class Hello
         def initialize()
             puts "Hello, world\n"
@@ -75,15 +73,13 @@ a supported extension.</p>
     end
 </pre>
 <p>Call it from file test.rb:</p>
-<pre>
-    require 'rubyglot'	# Create my file type handler
+<pre>    require 'rubyglot'	# Create my file type handler
     require 'hello'	# Can add extra options or even a block here
     puts "Ready to go"
     Hello.new
 </pre>
 <p>Run:</p>
-<pre>
-    $ ruby test.rb
+<pre>    $ ruby test.rb
     Initializing
     Ready to go
     Hello, world
@@ -97,7 +93,7 @@ a supported extension.</p>
 <h2>Contact</h2>
 <p>Comments are welcome. Send an email to <a href="mailto:cjheath@rubyforge.org">Clifford Heath</a></p>
     <p class="coda">
-      <a href="cjheath@rubyforge.org">Clifford Heath</a>, 29th January 2009<br>
+      <a href="cjheath@rubyforge.org">Clifford Heath</a>, 31st May 2009<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>

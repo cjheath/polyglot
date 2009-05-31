@@ -27,7 +27,7 @@ h2. Example
 
 Define and register your file type loader in file rubyglot.rb:
 
-    require 'polyglot'
+<pre>    require 'polyglot'
     class RubyglotLoader
         def self.load(filename, options = nil, &block)
             File.open(filename) {|file|
@@ -38,30 +38,34 @@ Define and register your file type loader in file rubyglot.rb:
         end
     end
     Polyglot.register("rgl", RubyglotLoader)
+</pre>
 
 This file, hello.rgl, will be loaded (this simple example uses Ruby code):
 
-    puts "Initializing"
+<pre>    puts "Initializing"
     class Hello
         def initialize()
             puts "Hello, world\n"
         end
     end
+</pre>
 
 Call it from file test.rb:
 
-    require 'rubyglot'	# Create my file type handler
+<pre>    require 'rubyglot'	# Create my file type handler
     require 'hello'	# Can add extra options or even a block here
     puts "Ready to go"
     Hello.new
+</pre>
 
 Run:
 
-    $ ruby test.rb
+<pre>    $ ruby test.rb
     Initializing
     Ready to go
     Hello, world
     $
+</pre>
 
 
 h2. How to submit patches
