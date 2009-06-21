@@ -1,4 +1,5 @@
 $:.unshift File.dirname(__FILE__)
+require 'pathname'
 
 module Polyglot
   @registrations ||= {} # Guard against reloading
@@ -13,7 +14,7 @@ module Polyglot
 
   def self.find(file, *options, &block)
     extensions = @registrations.keys*","
-    is_absolute = file[0] == File::SEPARATOR || file[0] == File::ALT_SEPARATOR || file =~ /\A[A-Z]:\\/i
+    is_absolute = Pathname.new(file).absolute?
     (is_absolute ? [""] : $:).each{|lib|
       base = is_absolute ? "" : lib+File::SEPARATOR
       # In Windows, repeated SEPARATOR chars have a special meaning, avoid adding them

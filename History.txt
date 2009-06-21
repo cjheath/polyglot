@@ -1,3 +1,8 @@
+== 0.2.6 2009-06-21
+
+* 1 significant fix:
+  * Require using absolute pathname now works correctly on Ruby 1.8
+
 == 0.2.5 2009-03-04
 
 * 1 significant fix:
