@@ -4,6 +4,8 @@ require 'pathname'
 module Polyglot
   @registrations ||= {} # Guard against reloading
   @loaded ||= {}
+  
+  class PolyglotLoadError < LoadError; end
 
   def self.register(extension, klass)
     extension = [extension] unless Enumerable === extension
@@ -41,7 +43,7 @@ module Polyglot
         if defined?(MissingSourceFile)
           raise MissingSourceFile.new(msg, file)
         else
-          raise LoadError.new(msg)
+          raise PolyglotLoadError.new(msg)
         end
       end
     end
@@ -56,7 +58,7 @@ module Kernel
   rescue LoadError => load_error
     begin
       Polyglot.load(*a, &b)
-    rescue LoadError
+    rescue Polyglot::PolyglotLoadError
       # Raise the original exception, possibly a MissingSourceFile with a path
       raise load_error
     end
