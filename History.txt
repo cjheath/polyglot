@@ -1,3 +1,19 @@
+== 0.2.9 2009-09-13
+
+* 1 minor fix:
+  * Use to_s on Pathname to support Ruby 1.9
+
+== 0.2.8 2009-08-18
+
+* 1 minor fix:
+  * Previous fix for LoadErrors failed for cucumber.
+
+== 0.2.7 2009-08-17
+
+* 1 minor fix:
+  * Fix Polyglot catching LoadErrors not raised in Polyglot.find and re-raising the 
+  wrong message.
+
 == 0.2.6 2009-06-21
 
 * 1 significant fix:
