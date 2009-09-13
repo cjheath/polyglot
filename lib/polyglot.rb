@@ -4,6 +4,8 @@ require 'pathname'
 module Polyglot
   @registrations ||= {} # Guard against reloading
   @loaded ||= {}
+  
+  class PolyglotLoadError < LoadError; end
 
   class NestedLoadError < LoadError
     def initialize le
@@ -54,7 +56,7 @@ module Polyglot
         if defined?(MissingSourceFile)
           raise MissingSourceFile.new(msg, file)
         else
-          raise LoadError.new(msg)
+          raise PolyglotLoadError.new(msg)
         end
       end
     end
