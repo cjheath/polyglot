@@ -4,7 +4,7 @@ require 'pathname'
 module Polyglot
   @registrations ||= {} # Guard against reloading
   @loaded ||= {}
-  
+
   class PolyglotLoadError < LoadError; end
 
   class NestedLoadError < LoadError
@@ -52,12 +52,7 @@ module Polyglot
           raise Polyglot::NestedLoadError.new(e)
         end
       else
-        msg = "Failed to load #{file} using extensions #{(@registrations.keys+["rb"]).sort*", "}"
-        if defined?(MissingSourceFile)
-          raise MissingSourceFile.new(msg, file)
-        else
-          raise PolyglotLoadError.new(msg)
-        end
+        raise PolyglotLoadError.new("Failed to load #{file} using extensions #{(@registrations.keys+["rb"]).sort*", "}")
       end
     end
   end
