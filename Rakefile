@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rake'
+require 'yaml'
 require 'jeweler'
 require './lib/polyglot/version'
 
@@ -33,11 +34,8 @@ end
 
 desc 'Upload website files via rsync'
 task :website_upload do
-  local_dir  = 'website'
-  website_config = YAML.load(File.read("config/website.yml"))
-  host       = website_config["host"]
-  host       = host ? "#{host}:" : ""
-  remote_dir = website_config["remote_dir"]
-  sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
+  rfconfig = YAML.load_file("#{ENV['HOME']}/.rubyforge/user-config.yml")
+  ENV['RSYNC_PASSWORD'] = rfconfig['password']
+  sh %{rsync -aCv website #{rfconfig['username']}@rubyforge.org:/var/www/gforge-projects/polyglot}
 end
 
