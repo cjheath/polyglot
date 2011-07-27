@@ -1,6 +1,6 @@
 = polyglot
 
-* http://polyglot.rubyforge.org
+* http://github.com/cjheath/polyglot
 
 == DESCRIPTION:
 

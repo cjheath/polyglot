@@ -1,3 +1,18 @@
+== 0.3.2 2011-07-27
+
+* 1 minor fix:
+  * Load file without extension if found exactly as required
+
+== 0.3.1 2010-02-29
+
+* 1 minor fix:
+  * Enumerable strings are deprecated in Ruby 1.8.8
+
+== 0.3.0 2010-02-14
+
+* 1 minor fix:
+  * Compatibility with Rails 3
+
 == 0.2.9 2009-09-13
 
 * 1 minor fix:
