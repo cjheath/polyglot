@@ -23,12 +23,11 @@ module Polyglot
   end
 
   def self.find(file, *options, &block)
-    extensions = @registrations.keys*","
     is_absolute = Pathname.new(file).absolute?
     (is_absolute ? [""] : $:).each{|lib|
       base = is_absolute ? "" : lib+File::SEPARATOR
       # In Windows, repeated SEPARATOR chars have a special meaning, avoid adding them
-      matches = Dir[(base+file+".{"+extensions+"}").to_s]
+      matches = Dir["#{base}#{file}{,.#{@registrations.keys*',.'}}"]
       # Revisit: Should we do more do if more than one candidate found?
       $stderr.puts "Polyglot: found more than one candidate for #{file}: #{matches*", "}" if matches.size > 1
       if path = matches[0]
