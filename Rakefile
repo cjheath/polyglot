@@ -16,6 +16,7 @@ for the file type associated with a filename extension, and it
 augments 'require' to find and load matching files.}
   gem.email = %w[clifford.heath@gmail.com]
   gem.authors = ["Clifford Heath"]
+  gem.files.exclude "website/**/*.*", "script/*"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
