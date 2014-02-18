@@ -24,7 +24,9 @@ module Polyglot
 
   def self.find(file, *options, &block)
     is_absolute = Pathname.new(file).absolute?
-    (is_absolute ? [""] : $:).each{|lib|
+    is_dot_relative = file =~ /\.[\/\\]/
+    paths = is_absolute ? [''] : Array(is_dot_relative ? '.' : nil) + $:
+    paths.each do |lib|
       base = is_absolute ? "" : lib+File::SEPARATOR
       # In Windows, repeated SEPARATOR chars have a special meaning, avoid adding them
       matches = Dir["#{base}#{file}{,.#{@registrations.keys*',.'}}"]
@@ -33,7 +35,7 @@ module Polyglot
       if path = matches[0]
         return [ path, @registrations[path.gsub(/.*\./,'')]]
       end
-    }
+    end
     return nil
   end
 
